@@ -68,7 +68,7 @@ class toastPoint:
         return f"({self.x}, {self.y})"
 
 class Animator:
-    def __init__(self, max_iter, 
+    def __init__(self, total, 
                  xlabel=None, ylabel=None, 
                  legend=None, 
                  xlim=None, ylim=None,
@@ -76,7 +76,7 @@ class Animator:
                  fmts=('-', 'm--', 'g-.', 'r:'),
                  nrows=1, ncols=1, figsize=(7, 5)):
         
-        self.total = max_iter
+        self.total = total
         
         self.length = 10
         self.fill = '█'
@@ -99,7 +99,7 @@ class Animator:
         if nrows * ncols == 1:
             self.axes = [self.axes, ]
         self.iter_message = f"\n  \n --------------------------------- \n"
-        xlim = xlim if xlim else [0, max_iter]
+        xlim = xlim if xlim else [0, total+1]
         self.config_axes = lambda: toast.set_axes(self.axes[0], xlabel, ylabel, xlim, ylim, xscale, yscale, legend, self.iter_message)
         self.X, self.Y, self.fmts = None, None, fmts
 
